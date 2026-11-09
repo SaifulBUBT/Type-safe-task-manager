@@ -1,7 +1,9 @@
 console.log("Hello, TypeScript!");
-import type { Task } from "./types/task.types";
 
-const task: Task = {
+import { taskRepository } from "./repositories/task.repository";
+
+// Example usage
+taskRepository.add({
   id: 1,
   title: "Learn TypeScript",
   description: "Practice TypeScript Generics",
@@ -13,6 +15,24 @@ const task: Task = {
     reminder: true,
     color: "blue",
   },
-};
+});
 
-console.log(task);
+taskRepository.add({
+  id: 2,
+  title: "Build a project",
+  description: "Create a TypeScript project using Generics",
+  status: "in-progress",
+  priority: "medium",
+  createdAt: new Date(),
+  dueDate: new Date("2026-12-01"),
+  settings: {
+    reminder: false,
+    color: "green",
+  },
+});
+
+console.log("All tasks:", taskRepository.getAll());
+
+console.log("Task with ID:", taskRepository.getById(1));
+
+taskRepository.update(1, { status: "in-progress" });
