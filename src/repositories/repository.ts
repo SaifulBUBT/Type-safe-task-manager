@@ -17,7 +17,10 @@ export class Repository<T extends { id: number }> {
   }
 
   // Update item by ID
-  update(id: number, updatedItem: Partial<Omit<T, "id">>): boolean {
+  update(
+    id: number,
+    updatedItem: Partial<Omit<T, "id" | "createdAt">>,
+  ): boolean {
     const index = this.items.findIndex((item) => item.id === id);
     if (index !== -1) {
       this.items[index] = { ...this.items[index], ...updatedItem };

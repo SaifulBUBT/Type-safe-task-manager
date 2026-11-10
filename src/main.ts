@@ -1,38 +1,43 @@
 console.log("Hello, TypeScript!");
 
-import { taskRepository } from "./repositories/task.repository";
+import { TaskService } from "./services/task.service";
 
-// Example usage
-taskRepository.add({
-  id: 1,
+const taskService = new TaskService();
+
+// Create a new task
+taskService.createTask({
   title: "Learn TypeScript",
   description: "Practice TypeScript Generics",
   status: "todo",
   priority: "high",
-  createdAt: new Date(),
   dueDate: new Date("2026-11-15"),
   settings: {
     reminder: true,
     color: "blue",
   },
 });
-
-taskRepository.add({
-  id: 2,
-  title: "Build a project",
-  description: "Create a TypeScript project using Generics",
-  status: "in-progress",
+taskService.createTask({
+  title: "Learn React",
+  description: "Practice React with TypeScript",
+  status: "todo",
   priority: "medium",
-  createdAt: new Date(),
-  dueDate: new Date("2026-12-01"),
+  dueDate: new Date("2026-11-20"),
   settings: {
     reminder: false,
     color: "green",
   },
 });
 
-console.log("All tasks:", taskRepository.getAll());
+console.log("All tasks:", taskService.getAllTasks());
 
-console.log("Task with ID:", taskRepository.getById(1));
+console.log("Task with ID:", taskService.getTaskById(1));
 
-taskRepository.update(1, { status: "in-progress" });
+taskService.updateTask(1, { status: "in-progress", priority: "medium" });
+
+console.log(" task with ID :", taskService.getTaskById(2));
+
+console.log("All tasks:", taskService.getAllTasks());
+
+taskService.deleteTask(1);
+
+console.log("All tasks after deletion:", taskService.getAllTasks());
