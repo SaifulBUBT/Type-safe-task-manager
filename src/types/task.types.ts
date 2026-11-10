@@ -17,3 +17,7 @@ export interface Task {
   dueDate?: Date;
   settings: TaskSettings;
 }
+
+export type CreateTaskInput = Omit<Task, "id" | "createdAt">;
+
+export type UpdateTaskInput = Partial<Omit<Task, "id" | "createdAt">>;

@@ -8,7 +8,7 @@ export class Repository<T extends { id: number }> {
 
   // Get all items
   getAll(): T[] {
-    return this.items;
+    return [...this.items];
   }
 
   // Find item by ID
@@ -17,7 +17,7 @@ export class Repository<T extends { id: number }> {
   }
 
   // Update item by ID
-  update(id: number, updatedItem: Partial<T>): boolean {
+  update(id: number, updatedItem: Partial<Omit<T, "id">>): boolean {
     const index = this.items.findIndex((item) => item.id === id);
     if (index !== -1) {
       this.items[index] = { ...this.items[index], ...updatedItem };
