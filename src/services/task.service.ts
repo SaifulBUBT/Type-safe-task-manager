@@ -7,6 +7,10 @@ import type {
 
 export class TaskService {
   createTask(input: CreateTaskInput): Task {
+    if (!input.title.trim()) {
+      throw new Error("Task title cannot be empty.");
+    }
+
     // TODO: Generate ID
     const tasks = taskRepository.getAll();
 
@@ -44,6 +48,9 @@ export class TaskService {
 
   // Update task by ID
   updateTask(id: number, updatedTask: UpdateTaskInput): boolean {
+    if (updatedTask.title !== undefined && !updatedTask.title.trim()) {
+      throw new Error("Task title cannot be empty");
+    }
     return taskRepository.update(id, updatedTask);
   }
 
