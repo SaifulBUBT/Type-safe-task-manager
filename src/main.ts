@@ -34,10 +34,15 @@ console.log("Task with ID:", taskService.getTaskById(1));
 
 taskService.updateTask(1, { status: "in-progress", priority: "medium" });
 
-console.log(" task with ID :", taskService.getTaskById(2));
+console.log("Task with ID after update:", taskService.getTaskById(1));
 
 console.log("All tasks:", taskService.getAllTasks());
 
 taskService.deleteTask(1);
 
 console.log("All tasks after deletion:", taskService.getAllTasks());
+
+
+console.log("Update invalid ID:", taskService.updateTask(999, {
+  status: "completed",
+}));
