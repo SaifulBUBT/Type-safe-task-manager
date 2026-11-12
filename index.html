@@ -7,7 +7,53 @@
     <title>type-safe-task-manager</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div class="app">
+      <!-- <header>
+        <h1>My Task Manager</h1>
+        <p>Manage your daily tasks</p>
+      </header> -->
+
+      <section class="task-form-section">
+        <h2>Create New Task</h2>
+
+        <form id="task-form">
+          <input
+            type="text"
+            id="task-title"
+            placeholder="Enter task title"
+            required
+          />
+
+          <textarea
+            id="task-description"
+            placeholder="Enter task description"
+          ></textarea>
+
+          <select id="task-priority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+          
+          <select id="task-status">
+            <option value="todo">To Do</option>
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+
+          <input type="date" id="task-due-date" />
+
+          <button type="submit">Add Task</button>
+        </form>
+      </section>
+
+      <section class="task-list-section">
+        <h2>My Tasks</h2>
+        <ul id="task-list"></ul>
+      </section>
+    </div>
+
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
